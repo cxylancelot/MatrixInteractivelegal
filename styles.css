@@ -386,36 +386,79 @@ body.no-anim .hero-cta {
    ========================================================== */
 .team-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 32px;
 }
 
 .member {
+  position: relative;
+  display: flex;
+  align-items: stretch;
   background: var(--white);
   border: 1px solid var(--gray-200);
-  padding: 40px 32px;
+  overflow: hidden;
+  min-height: 340px;
 }
 
-.member-avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #1235A8 0%, #001B5E 100%);
-  color: var(--white);
-  font-size: 28px;
-  font-weight: 700;
+.member-photo-side {
+  position: relative;
+  width: 44%;
+  flex-shrink: 0;
+}
+.member-photo-side > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.member-photo-side::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--white));
+}
+.member-photo-placeholder {
+  position: absolute;
+  inset: 14px;
+  border-radius: 10px;
+  border: 1.5px dashed var(--gray-300);
+  background: var(--gray-100);
+  color: var(--gray-500);
+  font-size: 13px;
+  letter-spacing: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
-  font-family: 'Inter', 'Noto Sans SC', sans-serif;
-  border: 2px solid rgba(0, 188, 242, 0.35);
-  box-shadow: inset 0 -6px 0 var(--gold);
 }
-.member-avatar-future {
-  background: repeating-linear-gradient(45deg, var(--gray-100), var(--gray-100) 6px, var(--gray-50) 6px, var(--gray-50) 12px);
-  border: 1px dashed var(--gray-300);
-  color: var(--gray-500);
+
+.member-card-body {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 40px 34px 34px;
+}
+
+.member-pixels {
+  position: absolute;
+  right: -26px;
+  bottom: -26px;
+  width: 220px;
+  height: 220px;
+  z-index: 0;
+  pointer-events: none;
+}
+.member-pixels img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .member-role {
@@ -797,6 +840,18 @@ a.contact-item:hover {
   .hero-content { padding-top: 60px; padding-bottom: 100px; }
   .section { padding: 80px 0; }
   .section-header { margin-bottom: 56px; }
+  .member { flex-direction: column; min-height: 0; }
+  .member-photo-side { width: 100%; height: 280px; }
+  .member-photo-side::after {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--white));
+  }
+  .member-card-body { padding: 28px 24px 30px; }
   .practice-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .cases-list { grid-template-columns: 1fr; }

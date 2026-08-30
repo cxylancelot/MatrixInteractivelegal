@@ -11,6 +11,8 @@
 | `script.js` | 滚动揭示动画（IntersectionObserver） |
 | `assets/logo.png` | 原始 logo（透明背景，取自 PSD 深色版；首页主视觉/页脚） |
 | `assets/mark.png` | 原始 logo 的 M 字标（透明背景；导航栏图标） |
+| `assets/team/` | 团队成员形象照（崔向一、顾子牧） |
+| `assets/pixel-m-color.svg` | 名片卡右下角矩阵星点装饰（像素风格） |
 | `assets/og-logo.png` | 分享预览图（1200×600） |
 | `assets/favicon.png` / `apple-touch-icon.png` | 浏览器与移动端图标 |
 
