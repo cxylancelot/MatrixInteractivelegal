@@ -4,22 +4,25 @@
    ========================================================== */
 
 :root {
-  --primary:       #0A13D0;
-  --primary-dark:  #061275;
-  --primary-mid:   #4754E0;
-  --primary-soft:  #B8C2F5;
+  --primary:       #071230;
+  --primary-dark:  #040B1E;
+  --primary-mid:   #0F2A6B;
+  --primary-soft:  #9FC9FF;
 
-  --slate:         #233A36;
-  --ink:           #0A0F1A;
+  --cyan:          #05c0f8;
+  --cyan-soft:     #8FE3FF;
 
-  --gray-50:       #F7F9FC;
-  --gray-100:      #EEF1F6;
-  --gray-200:      #D9DEE5;
-  --gray-300:      #C5CCD5;
-  --gray-500:      #67707A;
-  --gray-700:      #404A55;
+  --slate:         #071230;
+  --ink:           #030818;
 
-  --gold:          #FFB800;
+  --gray-50:       #eff0f4;
+  --gray-100:      #E4E7EF;
+  --gray-200:      #D4DAE6;
+  --gray-300:      #C0C8D8;
+  --gray-500:      #556072;
+  --gray-700:      #2b343d;
+
+  --gold:          #f7b706;
   --white:         #FFFFFF;
 }
 
@@ -69,20 +72,18 @@ img { max-width: 100%; display: block; }
 }
 
 /* Hero 元素：进入时立即生效（不依赖滚动） */
-.hero-mark, .hero-eyebrow, .hero-title, .hero-divider, .hero-tagline,
+.hero-logo-card, .hero-title, .hero-divider,
 .hero-lede, .hero-sub, .hero-cta {
   opacity: 0;
   transform: translateY(20px);
   animation: heroIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.hero-mark       { animation-delay: 0.15s; }
-.hero-eyebrow    { animation-delay: 0.40s; }
-.hero-title      { animation-delay: 0.55s; }
-.hero-divider    { animation-delay: 0.70s; transform: scaleX(0); transform-origin: left; }
-.hero-tagline    { animation-delay: 0.85s; }
-.hero-lede       { animation-delay: 1.00s; }
-.hero-sub        { animation-delay: 1.15s; }
-.hero-cta        { animation-delay: 1.30s; }
+.hero-logo-card  { animation-delay: 0.15s; }
+.hero-title      { animation-delay: 0.45s; }
+.hero-divider    { animation-delay: 0.60s; transform: scaleX(0); transform-origin: left; }
+.hero-lede       { animation-delay: 0.75s; }
+.hero-sub        { animation-delay: 0.90s; }
+.hero-cta        { animation-delay: 1.05s; }
 
 @keyframes heroIn {
   to { opacity: 1; transform: translateY(0); }
@@ -96,8 +97,8 @@ img { max-width: 100%; display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal], .hero-mark, .hero-eyebrow, .hero-title,
-  .hero-divider, .hero-tagline, .hero-lede, .hero-sub, .hero-cta {
+  [data-reveal], .hero-logo-card, .hero-title,
+  .hero-divider, .hero-lede, .hero-sub, .hero-cta {
     opacity: 1;
     transform: none;
     animation: none;
@@ -107,11 +108,9 @@ img { max-width: 100%; display: block; }
 
 /* 截图模式 · 强制显示所有元素（防止 IntersectionObserver 未触发） */
 body.no-anim [data-reveal],
-body.no-anim .hero-mark,
-body.no-anim .hero-eyebrow,
+body.no-anim .hero-logo-card,
 body.no-anim .hero-title,
 body.no-anim .hero-divider,
-body.no-anim .hero-tagline,
 body.no-anim .hero-lede,
 body.no-anim .hero-sub,
 body.no-anim .hero-cta {
@@ -122,27 +121,14 @@ body.no-anim .hero-cta {
 }
 
 /* ==========================================================
-   LOGO MARK · 用 logo 元素的 M 字标
+   LOGO · 导航 M 字标（取自 logo.png 的 M 元素）
    ========================================================== */
-.logo-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: var(--white);
-  color: var(--primary);
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  border-radius: 1px;
-}
-.logo-mark-sm {
-  width: 24px;
-  height: 24px;
-  font-size: 12px;
+.nav-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 2px;
+  display: block;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
 }
 
 /* ==========================================================
@@ -151,7 +137,10 @@ body.no-anim .hero-cta {
 .hero {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background:
+    radial-gradient(900px 480px at 84% -10%, rgba(5, 192, 248, 0.20), transparent 62%),
+    radial-gradient(720px 520px at 4% 112%, rgba(247, 183, 6, 0.10), transparent 62%),
+    linear-gradient(160deg, #0A1C4C 0%, #06102B 52%, #030816 100%);
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -173,7 +162,7 @@ body.no-anim .hero-cta {
   width: 720px;
   height: 720px;
   background-image:
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.18) 2px, transparent 2.5px);
+    radial-gradient(circle at center, rgba(143, 227, 255, 0.18) 2px, transparent 2.5px);
   background-size: 24px 24px;
   background-position: 0 0;
   opacity: 0.55;
@@ -246,30 +235,16 @@ body.no-anim .hero-cta {
   padding-bottom: 120px;
 }
 
-/* Hero 中央像素 M（拆解自 logo） */
-.hero-mark {
+/* Hero 主视觉 · 蓝底完整 logo */
+.hero-logo-card {
   margin-bottom: 40px;
-  width: 120px;
-  height: 120px;
-  color: var(--white);
-  filter: drop-shadow(0 0 24px rgba(255, 184, 0, 0.25));
+  width: min(640px, 100%);
+  filter: drop-shadow(0 24px 60px rgba(1, 4, 16, 0.45));
 }
-.hero-mark-svg {
+.hero-logo {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-}
-.hero-mark .m-navy { color: var(--white); }
-.hero-mark .m-gold { fill: var(--gold); }
-
-.hero-eyebrow {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  opacity: 0.6;
-  margin-bottom: 24px;
 }
 
 .hero-title {
@@ -281,19 +256,10 @@ body.no-anim .hero-cta {
 }
 
 .hero-divider {
-  width: 64px;
-  height: 3px;
-  background: var(--white);
+  width: 72px;
+  height: 6px;
+  background: linear-gradient(90deg, var(--gold) 0 56px, var(--cyan) 56px 64px, var(--gold) 64px 72px);
   margin-bottom: 24px;
-}
-
-.hero-tagline {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(20px, 2vw, 28px);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  margin-bottom: 32px;
-  opacity: 0.95;
 }
 
 .hero-lede {
@@ -333,20 +299,20 @@ body.no-anim .hero-cta {
   cursor: pointer;
 }
 .btn-primary {
-  background: var(--white);
-  color: var(--primary);
+  background: var(--gold);
+  color: var(--primary-dark);
 }
 .btn-primary:hover {
-  background: var(--primary-mid);
-  color: var(--white);
+  background: #FFC733;
+  color: var(--primary-dark);
 }
 .btn-ghost {
   border-color: rgba(255, 255, 255, 0.4);
   color: var(--white);
 }
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--white);
+  background: rgba(0, 188, 242, 0.12);
+  border-color: var(--cyan-soft);
 }
 
 /* ==========================================================
@@ -356,7 +322,11 @@ body.no-anim .hero-cta {
   padding: 120px 0;
   background: var(--white);
 }
-.section-alt { background: var(--gray-50); }
+.section-alt {
+  background-color: var(--gray-50);
+  background-image: radial-gradient(circle at center, rgba(18, 53, 168, 0.055) 1px, transparent 1.5px);
+  background-size: 22px 22px;
+}
 .section-dark {
   background: var(--slate);
   color: var(--white);
@@ -384,6 +354,14 @@ body.no-anim .hero-cta {
   text-transform: uppercase;
   color: var(--primary);
   margin-bottom: 20px;
+}
+.section-eyebrow::before {
+  content: "▮▮";
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-right: 12px;
+  vertical-align: 2px;
 }
 
 .section-title {
@@ -421,9 +399,9 @@ body.no-anim .hero-cta {
 .member-avatar {
   width: 72px;
   height: 72px;
-  border-radius: 50%;
-  background: var(--gray-100);
-  color: var(--primary);
+  border-radius: 6px;
+  background: linear-gradient(135deg, #1235A8 0%, #001B5E 100%);
+  color: var(--white);
   font-size: 28px;
   font-weight: 700;
   display: flex;
@@ -431,6 +409,8 @@ body.no-anim .hero-cta {
   justify-content: center;
   margin-bottom: 24px;
   font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  border: 2px solid rgba(0, 188, 242, 0.35);
+  box-shadow: inset 0 -6px 0 var(--gold);
 }
 .member-avatar-future {
   background: repeating-linear-gradient(45deg, var(--gray-100), var(--gray-100) 6px, var(--gray-50) 6px, var(--gray-50) 12px);
@@ -519,7 +499,7 @@ body.no-anim .hero-cta {
   margin-bottom: 24px;
 }
 .practice-name span {
-  color: var(--primary);
+  color: var(--cyan);
 }
 .practice-lede {
   font-size: 18px;
@@ -771,11 +751,13 @@ a.contact-item:hover {
   align-items: center;
   gap: 16px;
 }
-.footer-tagline {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  color: rgba(255, 255, 255, 0.4);
+.footer-logo-card {
+  width: 240px;
+}
+.footer-logo {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .footer-meta {
@@ -819,5 +801,5 @@ a.contact-item:hover {
   .contact-grid { grid-template-columns: 1fr; }
   .cases-list { grid-template-columns: 1fr; }
   .footer-inner { flex-direction: column; gap: 16px; align-items: flex-start; }
-  .hero-mark { width: 56px; height: 56px; }
+  .hero-logo-card { width: min(420px, 100%); }
 }
